@@ -28,4 +28,5 @@ $router->get('/', function () use ($router) {
     }
 });
 
+
 $router->post('/login', 'AuthController@login');
