@@ -11,8 +11,16 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    public function boot()
+    {
+        if ($this->app->environment('production')) {
+            URL::forceScheme('https');
+        }
+    }
     public function register()
     {
-        //
+        $this->app->singleton(\Illuminate\Contracts\Routing\ResponseFactory::class, function () {
+            return new \Laravel\Lumen\Http\ResponseFactory();
+        });
     }
 }
