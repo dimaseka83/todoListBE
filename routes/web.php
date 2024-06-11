@@ -24,7 +24,7 @@ $router->get('/', function () use ($router) {
             die("Could not find the database. Please check your configuration.");
         }
     } catch (\Exception $e) {
-        die("Could not open connection to database server.  Please check your configuration.");
+        die("Could not open connection to database server.  Please check your configuration.". $e->getMessage());
     }
 });
 
