@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tasks', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id'); // Change to bigIncrements('id') if you want to use big integer
             $table->string('title');
             $table->text('description');
             $table->boolean('completed')->default(false);
