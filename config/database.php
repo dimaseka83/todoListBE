@@ -19,9 +19,10 @@ return [
             'strict' => true,
             'engine' => null,
             'timezone' => '+07:00',
-            'options' => extension_loaded('pdo_mysql') ? array_filter([
-                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-            ]) : [],
+            'options' => (env('MYSQL_SSL') && extension_loaded('pdo_mysql')) ? [
+                PDO::MYSQL_ATTR_SSL_KEY    => '/ssl/DigiCertGlobalRootCA.crt.pem',
+                PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false
+            ] : []
         ],
 
     ],
