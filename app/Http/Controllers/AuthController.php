@@ -23,8 +23,6 @@ class AuthController extends Controller
 
             return response()->json([
                 'token' => $token,
-                'type' => 'bearer',
-                'message' => 'Login success'
             ]);
         } catch (\Throwable $e) {
             return response()->json([
@@ -51,9 +49,11 @@ class AuthController extends Controller
                 'password' => Hash::make($request->password)
             ]);
 
+            $token = auth()->login($user);
+
             return response()->json([
-                'message' => 'Register success',
-                'data' => $user
+                'message' => 'User registered successfully',
+                'token' => $token,
             ]);
         } catch (\Throwable $e) {
             return response()->json([

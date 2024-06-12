@@ -39,10 +39,7 @@ class TasksListController extends Controller
                     'is_priority' => $request->is_priority
                 ]
             );
-            return response()->json([
-                'message' => 'Success',
-                'data' => $task
-            ]);
+            return response()->json($task);
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => 'Failed',
@@ -63,7 +60,7 @@ class TasksListController extends Controller
             }
             $task->delete();
             return response()->json([
-                'message' => 'Success'
+                'message' => 'Task deleted successfully'
             ]);
         } catch (\Throwable $th) {
             return response()->json([

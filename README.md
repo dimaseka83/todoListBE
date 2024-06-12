@@ -26,7 +26,7 @@ https://todolistbe-production.up.railway.app/
 
 #### Register
 
-**POST** `/register`
+**POST** `/auth/register`
 
 **Request Body:**
 
@@ -49,7 +49,7 @@ https://todolistbe-production.up.railway.app/
 
 #### Login
 
-**POST** `/login`
+**POST** `/auth/login`
 
 **Request Body:**
 
@@ -72,7 +72,7 @@ https://todolistbe-production.up.railway.app/
 
 #### Create ToDo Item
 
-**POST** `/todos`
+**POST** `/tasks`
 
 **Request Headers:**
 
@@ -85,7 +85,9 @@ Authorization: Bearer your-jwt-token
 ```json
 {
     "title": "Your ToDo Title",
-    "description": "Your ToDo Description"
+    "description": "Your ToDo Description",
+    "due_date": "2024-06-13",
+    "is_priority": false
 }
 ```
 
@@ -93,17 +95,21 @@ Authorization: Bearer your-jwt-token
 
 ```json
 {
-    "id": 1,
-    "title": "Your ToDo Title",
-    "description": "Your ToDo Description",
-    "created_at": "2023-01-01T00:00:00.000000Z",
-    "updated_at": "2023-01-01T00:00:00.000000Z"
+    "title": "Tugas 1",
+    "description": "ini sebuah deskripsi",
+    "due_date": "2024-06-13",
+    "user_id": 1,
+    "completed": false,
+    "is_priority": false,
+    "updated_at": "2024-06-12T06:26:40.000000Z",
+    "created_at": "2024-06-12T06:26:40.000000Z",
+    "id": 2
 }
 ```
 
 #### List ToDo Items
 
-**GET** `/todos`
+**GET** `/tasks`
 
 **Request Headers:**
 
@@ -116,40 +122,22 @@ Authorization: Bearer your-jwt-token
 ```json
 [
     {
-        "id": 1,
-        "title": "Your ToDo Title",
-        "description": "Your ToDo Description",
-        "created_at": "2023-01-01T00:00:00.000000Z",
-        "updated_at": "2023-01-01T00:00:00.000000Z"
+        "id": 2,
+        "title": "Tugas 1",
+        "description": "ini sebuah deskripsi",
+        "due_date": "2024-06-13",
+        "completed": 0,
+        "user_id": 1,
+        "is_priority": 0,
+        "created_at": "2024-06-12T06:20:52.000000Z",
+        "updated_at": "2024-06-12T06:20:52.000000Z"
     }
 ]
 ```
 
-#### Get ToDo Item
-
-**GET** `/todos/{id}`
-
-**Request Headers:**
-
-```
-Authorization: Bearer your-jwt-token
-```
-
-**Response:**
-
-```json
-{
-    "id": 1,
-    "title": "Your ToDo Title",
-    "description": "Your ToDo Description",
-    "created_at": "2023-01-01T00:00:00.000000Z",
-    "updated_at": "2023-01-01T00:00:00.000000Z"
-}
-```
-
 #### Update ToDo Item
 
-**PUT** `/todos/{id}`
+**POST** `/tasks`
 
 **Request Headers:**
 
@@ -161,8 +149,11 @@ Authorization: Bearer your-jwt-token
 
 ```json
 {
-    "title": "Updated ToDo Title",
-    "description": "Updated ToDo Description"
+    "id": 1,
+    "title": "Tugas 1",
+    "description": "ini sebuah deskripsi",
+    "due_date": "2024-06-13",
+    "is_priority": false
 }
 ```
 
@@ -170,17 +161,21 @@ Authorization: Bearer your-jwt-token
 
 ```json
 {
-    "id": 1,
-    "title": "Updated ToDo Title",
-    "description": "Updated ToDo Description",
-    "created_at": "2023-01-01T00:00:00.000000Z",
-    "updated_at": "2023-01-01T00:00:00.000000Z"
+    "title": "Tugas 1",
+    "description": "ini sebuah deskripsi",
+    "due_date": "2024-06-13",
+    "user_id": 1,
+    "completed": false,
+    "is_priority": false,
+    "updated_at": "2024-06-12T06:26:40.000000Z",
+    "created_at": "2024-06-12T06:26:40.000000Z",
+    "id": 3
 }
 ```
 
 #### Delete ToDo Item
 
-**DELETE** `/todos/{id}`
+**DELETE** `/tasks/{id}`
 
 **Request Headers:**
 
@@ -192,7 +187,7 @@ Authorization: Bearer your-jwt-token
 
 ```json
 {
-    "message": "ToDo item deleted successfully"
+    "message": "Task deleted successfully"
 }
 ```
 
@@ -210,7 +205,7 @@ Authorization: Bearer your-jwt-token
 
 ### Prerequisites
 
--   PHP >= 7.3
+-   PHP >= 8.0
 -   Composer
 -   MySQL or any other supported database
 
