@@ -261,13 +261,9 @@ This API is deployed on [Railway](https://railway.app/). For deployment steps, r
 
 Feel free to submit issues and enhancement requests.
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
 ## Contact
 
-For any inquiries, please reach out to [your.email@example.com](mailto:your.email@example.com).
+For any inquiries, please reach out to [dimaseka83@gmail.com](mailto:dimaseka83@gmail.com).
 
 ---
 
