@@ -62,4 +62,20 @@ class AuthController extends Controller
             ], 500);
         }
     }
+
+    public function getAuthenticatedUser()
+    {
+        try {
+            $user = auth()->user();
+
+            return response()->json([
+                'user' => $user
+            ]);
+        } catch (\Throwable $e) {
+            return response()->json([
+                'message' => 'Get info failed',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
 }

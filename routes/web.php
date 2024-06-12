@@ -34,6 +34,7 @@ $router->get('/', function () use ($router) {
 Route::group(['prefix' => 'auth'], function () use ($router) {
     $router->post('login', 'AuthController@login');
     $router->post('register', 'AuthController@register');
+    $router->post('me', 'AuthController@getAuthenticatedUser');
 });
 
 Route::group(['middleware' => 'jwt'], function () use ($router) {
