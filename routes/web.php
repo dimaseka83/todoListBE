@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Route;
+
 /** @var \Laravel\Lumen\Routing\Router $router */
 
 /*
@@ -29,4 +31,13 @@ $router->get('/', function () use ($router) {
 });
 
 
-$router->post('/login', 'AuthController@login');
+Route::group(['prefix' => 'auth'], function () use ($router) {
+    $router->post('login', 'AuthController@login');
+    $router->post('register', 'AuthController@register');
+});
+
+Route::group(['middleware' => 'jwt'], function () use ($router) {
+    $router->get('tasks', 'TasksListController@getTasks');
+    $router->post('tasks', 'TasksListController@postOrUpdateTasks');
+    $router->delete('tasks/{id}', 'TasksListController@deleteTasks');
+});

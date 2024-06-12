@@ -33,4 +33,33 @@ class AuthController extends Controller
             ], 500);
         }
     }
+
+    public function register(Request $request)
+    {
+        try {
+            // check if email already exists
+            $check = User::where('email', $request->email)->first();
+            if ($check) {
+                return response()->json([
+                    'message' => 'Email already exists'
+                ], 400);
+            }
+
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password)
+            ]);
+
+            return response()->json([
+                'message' => 'Register success',
+                'data' => $user
+            ]);
+        } catch (\Throwable $e) {
+            return response()->json([
+                'message' => 'Register failed',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
 }
