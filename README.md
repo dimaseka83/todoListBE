@@ -6,11 +6,11 @@ Welcome to the ToDo List API! This project is a backend service for managing to-
 
 ## Features
 
-- User Authentication
-- Create, Read, Update, and Delete (CRUD) operations for to-do items
-- List to-do items with filtering options
-- Secure and efficient endpoints
-- Token-based authentication
+-   User Authentication
+-   Create, Read, Update, and Delete (CRUD) operations for to-do items
+-   List to-do items with filtering options
+-   Secure and efficient endpoints
+-   Token-based authentication
 
 ## Base URL
 
@@ -29,19 +29,21 @@ https://todolistbe-production.up.railway.app/
 **POST** `/register`
 
 **Request Body:**
+
 ```json
 {
-  "name": "Your Name",
-  "email": "your.email@example.com",
-  "password": "yourpassword"
+    "name": "Your Name",
+    "email": "your.email@example.com",
+    "password": "yourpassword"
 }
 ```
 
 **Response:**
+
 ```json
 {
-  "message": "User registered successfully",
-  "token": "your-jwt-token"
+    "message": "User registered successfully",
+    "token": "your-jwt-token"
 }
 ```
 
@@ -50,17 +52,19 @@ https://todolistbe-production.up.railway.app/
 **POST** `/login`
 
 **Request Body:**
+
 ```json
 {
-  "email": "your.email@example.com",
-  "password": "yourpassword"
+    "email": "your.email@example.com",
+    "password": "yourpassword"
 }
 ```
 
 **Response:**
+
 ```json
 {
-  "token": "your-jwt-token"
+    "token": "your-jwt-token"
 }
 ```
 
@@ -71,26 +75,29 @@ https://todolistbe-production.up.railway.app/
 **POST** `/todos`
 
 **Request Headers:**
+
 ```
 Authorization: Bearer your-jwt-token
 ```
 
 **Request Body:**
+
 ```json
 {
-  "title": "Your ToDo Title",
-  "description": "Your ToDo Description"
+    "title": "Your ToDo Title",
+    "description": "Your ToDo Description"
 }
 ```
 
 **Response:**
+
 ```json
 {
-  "id": 1,
-  "title": "Your ToDo Title",
-  "description": "Your ToDo Description",
-  "created_at": "2023-01-01T00:00:00.000000Z",
-  "updated_at": "2023-01-01T00:00:00.000000Z"
+    "id": 1,
+    "title": "Your ToDo Title",
+    "description": "Your ToDo Description",
+    "created_at": "2023-01-01T00:00:00.000000Z",
+    "updated_at": "2023-01-01T00:00:00.000000Z"
 }
 ```
 
@@ -99,20 +106,22 @@ Authorization: Bearer your-jwt-token
 **GET** `/todos`
 
 **Request Headers:**
+
 ```
 Authorization: Bearer your-jwt-token
 ```
 
 **Response:**
+
 ```json
 [
-  {
-    "id": 1,
-    "title": "Your ToDo Title",
-    "description": "Your ToDo Description",
-    "created_at": "2023-01-01T00:00:00.000000Z",
-    "updated_at": "2023-01-01T00:00:00.000000Z"
-  }
+    {
+        "id": 1,
+        "title": "Your ToDo Title",
+        "description": "Your ToDo Description",
+        "created_at": "2023-01-01T00:00:00.000000Z",
+        "updated_at": "2023-01-01T00:00:00.000000Z"
+    }
 ]
 ```
 
@@ -121,18 +130,20 @@ Authorization: Bearer your-jwt-token
 **GET** `/todos/{id}`
 
 **Request Headers:**
+
 ```
 Authorization: Bearer your-jwt-token
 ```
 
 **Response:**
+
 ```json
 {
-  "id": 1,
-  "title": "Your ToDo Title",
-  "description": "Your ToDo Description",
-  "created_at": "2023-01-01T00:00:00.000000Z",
-  "updated_at": "2023-01-01T00:00:00.000000Z"
+    "id": 1,
+    "title": "Your ToDo Title",
+    "description": "Your ToDo Description",
+    "created_at": "2023-01-01T00:00:00.000000Z",
+    "updated_at": "2023-01-01T00:00:00.000000Z"
 }
 ```
 
@@ -141,26 +152,29 @@ Authorization: Bearer your-jwt-token
 **PUT** `/todos/{id}`
 
 **Request Headers:**
+
 ```
 Authorization: Bearer your-jwt-token
 ```
 
 **Request Body:**
+
 ```json
 {
-  "title": "Updated ToDo Title",
-  "description": "Updated ToDo Description"
+    "title": "Updated ToDo Title",
+    "description": "Updated ToDo Description"
 }
 ```
 
 **Response:**
+
 ```json
 {
-  "id": 1,
-  "title": "Updated ToDo Title",
-  "description": "Updated ToDo Description",
-  "created_at": "2023-01-01T00:00:00.000000Z",
-  "updated_at": "2023-01-01T00:00:00.000000Z"
+    "id": 1,
+    "title": "Updated ToDo Title",
+    "description": "Updated ToDo Description",
+    "created_at": "2023-01-01T00:00:00.000000Z",
+    "updated_at": "2023-01-01T00:00:00.000000Z"
 }
 ```
 
@@ -169,14 +183,16 @@ Authorization: Bearer your-jwt-token
 **DELETE** `/todos/{id}`
 
 **Request Headers:**
+
 ```
 Authorization: Bearer your-jwt-token
 ```
 
 **Response:**
+
 ```json
 {
-  "message": "ToDo item deleted successfully"
+    "message": "ToDo item deleted successfully"
 }
 ```
 
@@ -185,6 +201,7 @@ Authorization: Bearer your-jwt-token
 The API uses token-based authentication. After successful login or registration, you will receive a JWT token that must be included in the `Authorization` header of all subsequent requests.
 
 Example:
+
 ```
 Authorization: Bearer your-jwt-token
 ```
@@ -193,39 +210,50 @@ Authorization: Bearer your-jwt-token
 
 ### Prerequisites
 
-- PHP >= 7.3
-- Composer
-- MySQL or any other supported database
+-   PHP >= 7.3
+-   Composer
+-   MySQL or any other supported database
 
 ### Installation
 
 1. Clone the repository:
+
     ```bash
     git clone https://github.com/yourusername/todolist-api.git
     cd todolist-api
     ```
 
 2. Install dependencies:
+
     ```bash
     composer install
     ```
 
 3. Copy the `.env.example` to `.env` and update your database credentials and other configurations:
+
     ```bash
     cp .env.example .env
     ```
 
 4. Generate application key:
+
     ```bash
     php artisan key:generate
     ```
 
-5. Run database migrations:
+5. Generate jwt key:
+
+    ```bash
+    php artisan jwt:secret
+    ```
+
+6. Run database migrations:
+
     ```bash
     php artisan migrate
     ```
 
-6. Start the development server:
+7. Start the development server:
     ```bash
     php -S localhost:8000 -t public
     ```
