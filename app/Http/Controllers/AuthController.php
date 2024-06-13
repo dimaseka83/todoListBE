@@ -68,9 +68,7 @@ class AuthController extends Controller
         try {
             $user = auth()->user();
 
-            return response()->json([
-                'user' => $user
-            ]);
+            return response()->json($user);
         } catch (\Throwable $e) {
             return response()->json([
                 'message' => 'Get info failed',
