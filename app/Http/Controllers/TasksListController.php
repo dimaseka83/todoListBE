@@ -12,10 +12,7 @@ class TasksListController extends Controller
         try {
             $id = auth()->user()->id;
             $tasks = Tasks::where('user_id', $id)->get();
-            return response()->json([
-                'message' => 'Success',
-                'data' => $tasks
-            ]);
+            return response()->json($tasks);
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => 'Failed',
